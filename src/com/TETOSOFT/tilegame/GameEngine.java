@@ -326,6 +326,8 @@ public class GameEngine extends GameCore
      * Checks for Player collision with other Sprites. If
      * canKill is true, collisions with Creatures will kill
      * them.
+     * @param player
+     * @param canKill
      */
     public void checkPlayerCollision(Player player,
             boolean canKill) {
@@ -364,6 +366,7 @@ public class GameEngine extends GameCore
     /**
      * Gives the player the speicifed power up and removes it
      * from the map.
+     * @param powerUp
      */
     public void acquirePowerUp(PowerUp powerUp) {
         // remove it from the map
@@ -387,5 +390,7 @@ public class GameEngine extends GameCore
             map = mapLoader.loadNextMap();
             
         }
-    }  
+    }
+    
+      
 }

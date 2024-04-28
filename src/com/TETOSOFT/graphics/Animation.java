@@ -5,32 +5,27 @@ import java.util.ArrayList;
 
 public class Animation 
 {
-
     private ArrayList frames;
-    private int currFrameIndex;
-    private long animTime;
-    private long totalDuration;
-
+    private int currFrameIndex; 
+    private long animTime; // تتبع الوقت منذ بداية تشغيل اللعبة
+    private long totalDuration;// تتبع مدة الرسم المتحرك الكلية
 
     public Animation() 
     {
         this(new ArrayList(), 0);
     }
 
-
     private Animation(ArrayList frames, long totalDuration) 
     {
         this.frames = frames;
         this.totalDuration = totalDuration;
-        start();
+        start(); 
     }
 
-
-    public Object clone() 
+    public Object clone() //تقوم بإنشاء نسخة جديدة مستقلة
     {
         return new Animation(frames, totalDuration);
     }
-
 
     public synchronized void addFrame(Image image, long duration)
     {
@@ -38,13 +33,11 @@ public class Animation
         frames.add(new AnimFrame(image, totalDuration));
     }
 
-
     public synchronized void start() 
     {
         animTime = 0;
         currFrameIndex = 0;
     }
-
 
     public synchronized void update(long elapsedTime) 
     {
@@ -65,7 +58,6 @@ public class Animation
         }
     }
 
-
     public synchronized Image getImage() 
     {
         if (frames.size() == 0) 
@@ -77,7 +69,6 @@ public class Animation
             return getFrame(currFrameIndex).image;
         }
     }
-
 
     private AnimFrame getFrame(int i) 
     {

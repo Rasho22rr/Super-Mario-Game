@@ -1,3 +1,4 @@
+
 package com.TETOSOFT.graphics;
 
 import java.awt.*;
@@ -6,26 +7,29 @@ import java.awt.image.BufferedImage;
 import java.lang.reflect.InvocationTargetException;
 import javax.swing.JFrame;
 
-public class ScreenManager 
-{
-    private GraphicsDevice device;
+// Singleton Pattern
+public class ScreenManager {
+    
+    private static ScreenManager instance;
+    private final GraphicsDevice device;
 
-   
-    public ScreenManager() 
-    {
+    private ScreenManager() {
         GraphicsEnvironment environment = GraphicsEnvironment.getLocalGraphicsEnvironment();
         device = environment.getDefaultScreenDevice();
     }
 
-
+    public static ScreenManager getInstance() {
+        if (instance == null) {
+            instance = new ScreenManager();
+        }
+        return instance;
+    }
     
     public DisplayMode[] getCompatibleDisplayModes() 
     {
         return device.getDisplayModes();
     }
 
-
-   
     public DisplayMode findFirstCompatibleMode(DisplayMode modes[])
     {
         DisplayMode goodModes[] = device.getDisplayModes();

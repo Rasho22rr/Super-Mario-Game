@@ -79,11 +79,9 @@ public abstract class GameCore {
     /**
         Sets full screen mode and initiates and objects.
     */
-    public void init() 
-    {
-        screen = new ScreenManager();
-        DisplayMode displayMode =
-        screen.findFirstCompatibleMode(POSSIBLE_MODES);
+    public void init() {
+        screen = ScreenManager.getInstance();
+        DisplayMode displayMode = screen.findFirstCompatibleMode(POSSIBLE_MODES);
         screen.setFullScreen(displayMode);
 
         Window window = screen.getFullScreenWindow();

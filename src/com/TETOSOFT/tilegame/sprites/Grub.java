@@ -13,7 +13,9 @@ public class Grub extends Creature {
         super(left, right, deadLeft, deadRight);
     }
 
+
     public float getMaxSpeed() {
         return 0.05f;
     }
+
 }
